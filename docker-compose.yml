@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+  redis:
+    image: redis:3
+    ports:
+      - 6379:6379
+  thalassa:
+    build: ./thalassa
+    links:
+      - redis:redis
+    ports:
+      # the axon socket port
+      - 5001
+      # the API port, used for members registrations
+      - 9000:9000
+  aqueduct:
+    build: ./thalassa-aqueduct
+    links:
+      - thalassa:thalassa
+    ports:
+      # the API/web ui port, used for front/back-ends configuration
+      - 10000:10000
+      # here you should add the ports mapping for the services you plan
+      # to proxy
