@@ -98,6 +98,9 @@ curl -H "Content-type: application/json" -X PUT -d '{ "type":"dynamic", "name":"
 curl -H "Content-type: application/json" -X PUT -d '{ "type":"dynamic", "name":"webapp-backend", "version":"1.0.0","balance":"source", "mode":"http","health":{"interval":"5000"}}' http://localhost:10000/backends/webapp-backend
 ```
 
+Aqueduct UI should now look like this:
+!["Frontend and backend created"](/../screenshots/frontend_and_backend_created.png?raw=true)
+
 ## Server registration
 
 Now that we have a frontend and a backend, for each service, we need to register the servers that will provide the service.
@@ -126,7 +129,9 @@ where:
 
 Given that we're running everything in Docker, take great care that the servers can be joined from the thalassa-aqueduct container.
 
-If you have a look at Aqueduct UI, you should now see a new member on the mysql-backend, with the given IP - and a "down" status, except if you have a MySQL server running at 10.0.0.1!
+If you have a look at Aqueduct UI, you should now see a new member on the mysql-backend, with the given IP - and a "down" status, except if you have a MySQL server running at 10.0.0.1:
+
+!["Added a MySQL sever"](/../screenshots/added_a_mysql_server.png?raw=true)
 
 ### Registering a new webapp server
 
@@ -137,6 +142,10 @@ curl -H "Content-type: application/json" -X POST -d '{ "secondsToExpire":"10000"
 ```
 
 As you can see in this example, the server can use any port on the backend: HAproxy will expose the service on its configured frontend port.
+
+After adding a few more, Aqueduct UI should look like this:
+
+!["Multiple MySQL and webapp servers added."](/../screenshots/multiple_mysql_and_webapp_servers_added.png?raw=true)
 
 ## Licensing
 
