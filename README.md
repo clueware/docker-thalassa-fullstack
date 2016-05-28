@@ -95,7 +95,7 @@ curl -H "Content-type: application/json" -X PUT -d '{ "type":"dynamic", "name":"
 ### The web app backend
 
 ```shell
-curl -H "Content-type: application/json" -X PUT -d '{ "type":"dynamic", "name":"webapp-backend", "version":"1.0.0","balance":"source", "mode":"tcp","health":{"interval":"5000"}}' http://localhost:10000/backends/webapp-backend
+curl -H "Content-type: application/json" -X PUT -d '{ "type":"dynamic", "name":"webapp-backend", "version":"1.0.0","balance":"source", "mode":"http","health":{"interval":"5000"}}' http://localhost:10000/backends/webapp-backend
 ```
 
 ## Server registration
